@@ -1,0 +1,112 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+struct Fractie
+{
+	int numarator;
+	int numitor;
+};
+
+int numitorul_este_zero(Fractie f)
+{
+	if (f.numitor == 0)
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+
+
+Fractie calculeaza(Fractie f1, Fractie f2, int operatie)
+{
+	Fractie rezultat;
+
+	switch (operatie)
+	{
+	case 0:
+		rezultat.numarator = f1.numarator*f2.numitor + f1.numitor*f2.numarator;
+		rezultat.numitor= f1.numitor*f1.numitor;
+		break;
+	case 1:
+		rezultat.numarator =f1.numarator*f2.numitor - f1.numitor*f2.numarator;
+		rezultat.numitor= f1.numitor*f1.numitor;
+		break;
+	case 2:
+		
+		rezultat.numarator=f1.numarator*f2.numarator;
+		rezultat.numitor =f1.numitor*f2.numitor;
+		break;
+	case 3:
+		rezultat.numarator = f1.numarator*f2.numitor;
+		rezultat.numitor =f1.numitor*f2.numarator;
+		break;
+	}
+	return rezultat;
+}
+
+void afiseaza(Fractie f)
+{
+	cout << f.numarator << "/" << f.numitor << endl;
+}
+
+
+int main()
+{
+	Fractie a1, a2, rezultat;
+	int operatie;
+
+	cout << "Introduceti numaratorul primei fractii: " << endl;
+	cin >> a1.numarator;
+	cout << "Introduceti numitorul celei primei fractii: " << endl;
+	cin >> a1.numitor;
+	cout << "Introduceti numaratorul celei de a doua fractii: " << endl;
+	cin >> a2.numarator;
+	cout << "Introdeceti numitorul celei de a doua fractii: " << endl;
+	cin >> a2.numitor;
+
+	if (numitorul_este_zero(a1) == 1 || numitorul_este_zero(a2)==1)
+	{
+		cout << "EROARE!!! Nu se pot efectua operatiile!" << endl;
+	}
+	else
+	{
+		cout << "Fractia 1: ";
+		afiseaza(a1);
+		cout << "Fractia 2: ";
+		afiseaza(a2);
+		do
+		{
+			cout << "Introduceti un numar de la tastatura: " << endl;
+			cin >> operatie;
+
+			if (operatie == 0 || operatie == 1 || operatie == 2 || operatie == 3)
+			{
+				cout << "Rezultat: ";
+				rezultat = calculeaza(a1, a2, operatie);
+				afiseaza(rezultat);
+
+			}
+		} while (operatie == 0 || operatie == 1 || operatie == 2 || operatie == 3);
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
